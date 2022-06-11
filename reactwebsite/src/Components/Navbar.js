@@ -1,13 +1,66 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from './Button';
+import './Navbar.css';
 
-function NavBar() {
-  return (
-    <>
-    <nav className="navbar">
+function Navbar() {
+    const [click, setClick] = useState(false);
+    const [button, setButton] = useState(true);
 
-    </nav>
-    </>
-  )
+    const handleClick = () => setClick(!click);
+    const closeMobileMenu = () => setClick(false);
+
+    const showButton = () => {
+        if (window.innerWidth <= 960) {
+            setButton(false);
+        } else {
+            setButton(true);
+        }
+    };
+
+    useEffect(() => {
+        showButton();
+    }, []);
+
+    window.addEventListener('resize', showButton);
+
+    return (
+        <>
+            <nav className='navbar'>
+                <div className='navbar-container'>
+                    <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+                        FindABurger < i className='fa-solid fa-burger' />
+                    </Link>
+                    <div className='menu-icon' onClick={handleClick}>
+                        <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+                    </div>
+                    <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                        <li className='nav-item'>
+                            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                                Home
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
+                            <Link to='/restaurants' className='nav-links' onClick={closeMobileMenu}>
+                                Restaurants
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
+                            <Link to='/about-us' className='nav-links' onClick={closeMobileMenu}>
+                                About us
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
+                            <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
+                                Sign Up
+                            </Link>
+                        </li>
+                    </ul>
+                    {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+                </div>
+            </nav>
+        </>
+    );
 }
 
-export default NavBar
+export default Navbar;
