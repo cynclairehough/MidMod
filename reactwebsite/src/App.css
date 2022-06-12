@@ -11,6 +11,7 @@
 }
 /*
 .home,
+.restaurants,
 .services,
 .products,
 .sign-up {
@@ -47,5 +48,14 @@
   color: #fff;
   font-size: 100px;
 }
+
+.restaurants {
+ background-image: url('/images/img-8.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: 100px;
+}  
 
 */

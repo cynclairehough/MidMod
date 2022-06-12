@@ -8,7 +8,7 @@ function HeroSection() {
   return (
     <div className='hero-container'>
         Hey!
-       <video url="https://youtu.be/noDyhyFVIBo"  width="750" height="500" controls/>
+       <video url="https://youtu.be/noDyhyFVIBo"  autoPlay loop controls/>
         <h1>
             Looking for the best burger around?
         </h1>
